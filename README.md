@@ -9,6 +9,7 @@
 * Fully async
 * Alembic migrations
 * Use aiozoom library
+* Use travis ci
 
 ### To use in on your device:
 ```git clone https://github.com/vladisa88/fastapi-zoom.git```
