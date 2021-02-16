@@ -9,13 +9,20 @@ from services.zoom import zoom_service
 
 from models.zoom import Meeting
 
-from aiozoom import Zoom
-
 
 class MeetingService(Base):
+    """
+    Service for expanding base logic for
+    Zoom meetings
+    """
+
     model = Meeting
 
     async def create(self, schema: BaseModel, **kwargs: tp.Any) -> ormar.Model:
+        """
+        Create meeting using `aiozoom`, create `Meeting` object
+        """
+        # pylint:disable=(no-member)
         body = zoom_service.body(schema.title)
         account = await account_service.get_random_account()
         meeting = await zoom_service.zoom.create_meeting(account.email, body)
@@ -30,6 +37,9 @@ class MeetingService(Base):
         return obj
 
     async def stop(self, meeting_id: str) -> None:
+        """
+        Stop the meeting using `aiozoom`, update objects in database
+        """
         meeting = await self.fetch_one_by_param(meeting_id=meeting_id)
         account = await account_service.fetch_one(meeting.email.id)
         await meeting.update(is_active=False)
