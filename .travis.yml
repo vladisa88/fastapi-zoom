@@ -1,0 +1,8 @@
+language: python
+python:
+  - "3.9"
+install:
+  - pip install pipenv
+  - pipenv install --dev
+script:
+  - pylint --verbose app --ignore=alembic
