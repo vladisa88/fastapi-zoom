@@ -9,7 +9,7 @@ class ZoomService:
     for requests to Zoom API
     """
 
-    ZOOM_TOKEN = os.environ.get('ZOOM_TOKEN')
+    ZOOM_TOKEN = os.environ["ZOOM_TOKEN"]
 
     def __init__(self):
         Zoom.configure(self.ZOOM_TOKEN)
@@ -17,6 +17,9 @@ class ZoomService:
 
     @property
     def zoom(self) -> Zoom:
+        """
+        Return aiozoom Zoom object
+        """
         return self.__zoom
 
     @staticmethod
@@ -25,15 +28,16 @@ class ZoomService:
         Create body for requests
         """
         return {
-            'topic': title,
-            'type': 2,
-            'timezone': 'Europe/Moscow',
-            'settings': {
-                'auto_recording': 'cloud',
-                'waiting_room': False,
-                'meeting_authentication': True,
-                'join_before_host': True
-            }
+            "topic": title,
+            "type": 2,
+            "timezone": "Europe/Moscow",
+            "settings": {
+                "auto_recording": "cloud",
+                "waiting_room": False,
+                "meeting_authentication": True,
+                "join_before_host": True,
+            },
         }
+
 
 zoom_service = ZoomService()

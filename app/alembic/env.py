@@ -6,10 +6,11 @@ from sqlalchemy import pool
 
 from alembic import context
 
-sys.path = ['', '..'] + sys.path[1:]
+sys.path = ["", ".."] + sys.path[1:]
 
 from conf.db import metadata
 from conf.settings import POSTGRES_CONFIG
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 
@@ -19,7 +20,7 @@ config = context.config
 # instead of `alembic.ini`
 # More: https://stackoverflow.com/questions/37890284/ini-file-load-environment-variable
 URL = POSTGRES_CONFIG.url
-config.set_main_option('sqlalchemy.url', URL)
+config.set_main_option("sqlalchemy.url", URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -35,6 +36,7 @@ target_metadata = metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+
 
 def run_migrations_offline():
     """Run migrations in 'offline' mode.
@@ -73,9 +75,7 @@ def run_migrations_online():
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

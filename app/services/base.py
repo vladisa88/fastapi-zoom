@@ -11,7 +11,9 @@ class Base:
         return await self.model.objects.all()
 
     async def create(self, schema: BaseModel, **kwargs: tp.Any) -> ormar.Model:
-        obj = await self.model.objects.create(**schema.dict(exclude_unset=True), **kwargs)
+        obj = await self.model.objects.create(
+            **schema.dict(exclude_unset=True), **kwargs
+        )
         return obj
 
     async def fetch_one(self, unique_id: int) -> ormar.Model:

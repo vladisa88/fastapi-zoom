@@ -9,14 +9,13 @@ from routers.zoom import zoom_router
 from routers.license import account_router
 
 app = FastAPI(
-    title=CONFIG.title,
-    description=CONFIG.description,
-    version=CONFIG.version
+    title=CONFIG.title, description=CONFIG.description, version=CONFIG.version
 )
 
 
 metadata.create_all(engine)
 app.state.database = database
+
 
 @app.on_event("startup")
 async def startup() -> None:
@@ -31,12 +30,7 @@ async def shutdown() -> None:
     if database_.is_connected:
         await database_.disconnect()
 
-app.include_router(
-    zoom_router,
-    tags=['meetings']
-)
 
-app.include_router(
-    account_router,
-    tags=['accounts']
-)
+app.include_router(zoom_router, tags=["meetings"])
+
+app.include_router(account_router, tags=["accounts"])
