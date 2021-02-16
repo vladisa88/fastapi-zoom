@@ -1,3 +1,4 @@
+# pylint:disable=(missing-function-docstring)
 import asyncio
 
 from fastapi import APIRouter
@@ -5,7 +6,6 @@ from fastapi import APIRouter
 from services.license import LicenseAccountService
 from services.functions import create_accounts_task
 
-from models.license import LicenseAccount
 
 account_router = APIRouter()
 account_service = LicenseAccountService()

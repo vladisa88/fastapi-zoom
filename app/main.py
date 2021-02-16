@@ -1,5 +1,3 @@
-import os
-import uvicorn
 from fastapi import FastAPI
 
 from conf.db import database, metadata, engine
@@ -19,6 +17,9 @@ app.state.database = database
 
 @app.on_event("startup")
 async def startup() -> None:
+    """
+    Create database connection
+    """
     database_ = app.state.database
     if not database_.is_connected:
         await database_.connect()
@@ -26,6 +27,9 @@ async def startup() -> None:
 
 @app.on_event("shutdown")
 async def shutdown() -> None:
+    """
+    Disconnect from database
+    """
     database_ = app.state.database
     if database_.is_connected:
         await database_.disconnect()

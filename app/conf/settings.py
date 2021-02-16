@@ -1,6 +1,5 @@
+# pylint:disable=(invalid-name, too-few-public-methods, missing-class-docstring)
 import os
-
-from pydantic import BaseSettings
 
 from conf.vars import TITLE, DESCRIPTION, VERSION
 
