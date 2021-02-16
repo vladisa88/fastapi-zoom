@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  back-end:
+    container_name: zoom-back-end
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    depends_on: 
+      - postgres
+    ports: 
+      - $BACK_END_PORT:$BACK_END_PORT
+    env_file:
+      - .env
+    volumes: 
+      - ./app/conf:/app/conf
+      - ./app/routers:/app/routers
+      - ./app/schemas:/app/schemas
+      - ./app/services:/app/services
+
+
+volumes:
+  postgres_data:

@@ -1,0 +1,9 @@
+### Project ###
+## Directories
+.idea
+__pycache__
+/.vscode
+
+## Files
+.DS_Store
+.env
