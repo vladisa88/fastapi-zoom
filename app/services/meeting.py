@@ -21,21 +21,21 @@ class MeetingService(Base):
         meeting = await zoom_service.zoom.create_meeting(account.email, body)
         obj = await self.model.objects.create(
             **schema.dict(exclude_unset=True),
-            meeting_id=str(meeting.get('id')),
-            start_url=meeting.get('start_url'),
-            join_url=meeting.get('join_url'),
+            meeting_id=str(meeting.get("id")),
+            start_url=meeting.get("start_url"),
+            join_url=meeting.get("join_url"),
             email=account,
-            **kwargs)
+            **kwargs
+        )
         return obj
 
     async def stop(self, meeting_id: str) -> None:
-        meeting = await self.fetch_one_by_param(
-            meeting_id=meeting_id)
-        account = await account_service.fetch_one(
-            meeting.email.id)
+        meeting = await self.fetch_one_by_param(meeting_id=meeting_id)
+        account = await account_service.fetch_one(meeting.email.id)
         await meeting.update(is_active=False)
         await account.update(is_using=False)
         await zoom_service.zoom.stop_meeting(meeting_id)
         return
+
 
 meeting_service = MeetingService()

@@ -13,4 +13,5 @@ class LicenseAccountService(Base):
         await email.update(is_using=True)
         return email
 
+
 account_service = LicenseAccountService()
