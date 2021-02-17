@@ -69,11 +69,11 @@
         },
         "aiozoom": {
             "hashes": [
-                "sha256:249d529efdd7b4945416f2b646ac709fd3640435c19f6ac70715b08b7ebf4e89",
-                "sha256:a2e28e8449707da7b811c94e84c7f980370f1b98dda49538b632edaa7ec3b159"
+                "sha256:c5b0216c584a5690826d084200f5309d0e6c69d8a7fcae4f958c06584ce95d0e",
+                "sha256:ef17be6dc77e2918088d5147feb5c7ac5316ea30f4bc5c3f347068253435bbf9"
             ],
             "index": "pypi",
-            "version": "==0.0.8"
+            "version": "==0.0.8.8"
         },
         "alembic": {
             "hashes": [
