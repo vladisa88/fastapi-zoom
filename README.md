@@ -1,5 +1,7 @@
 # FASTAPI-ZOOM
 
+[![CodeFactor](https://www.codefactor.io/repository/github/vladisa88/fastapi-zoom/badge/master)](https://www.codefactor.io/repository/github/vladisa88/fastapi-zoom/overview/master)  ![Travis-CI](https://travis-ci.com/vladisa88/fastapi-zoom.svg?branch=master)
+
 ## This project provides you a way to interact with Zoom API via REST API
 
 ### Features:
