@@ -1,11 +1,15 @@
 from fastapi import FastAPI
 
+from fastapi_utils.tasks import repeat_every
+
 from conf.db import database, metadata, engine
 from conf.settings import CONFIG
 
 from routers.zoom import zoom_router
 from routers.license import account_router
 from routers.statistic import statistic_router
+
+from services.tasks import upload_recordings
 
 app = FastAPI(
     title=CONFIG.title, description=CONFIG.description, version=CONFIG.version
@@ -24,6 +28,15 @@ async def startup() -> None:
     database_ = app.state.database
     if not database_.is_connected:
         await database_.connect()
+
+
+@app.on_event("startup")
+@repeat_every(seconds=1000000000)
+async def task() -> None:
+    """
+    Repeated task
+    """
+    await upload_recordings()
 
 
 @app.on_event("shutdown")

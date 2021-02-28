@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9ac371feefd3a9395fe1807c6572e9777c4ccb830dd4f7ec4acd6ab1545b5cd6"
+            "sha256": "ba810fa4ff07bf19dda064f09553a2fe663cf15a51294825595d51fba25ffc3f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -171,6 +171,14 @@
             ],
             "index": "pypi",
             "version": "==0.63.0"
+        },
+        "fastapi-utils": {
+            "hashes": [
+                "sha256:0e6c7fc1870b80e681494957abf65d4f4f42f4c7f70005918e9181b22f1bd759",
+                "sha256:dd0be7dc7f03fa681b25487a206651d99f2330d5a567fb8ab6cb5f8a06a29360"
+            ],
+            "index": "pypi",
+            "version": "==0.2.1"
         },
         "h11": {
             "hashes": [
@@ -347,11 +355,11 @@
         },
         "ormar": {
             "hashes": [
-                "sha256:ee9e5975fc58c8ae0c630e96cae7d1d5221f63ade3d918635f140a47b501b965",
-                "sha256:faa4d9ee3ef40666a89a6b0b8f0441c34b1bcb05bb0ab27039dbce8e969ffdb3"
+                "sha256:41cbba3d3c52e2fb9a7a14d4d0270103f2a65738b60b42c49b69b24d4e23afd1",
+                "sha256:49241150188e96a214f401882d53d2e7ff4fef87c5b6f2005c1fbfc5b0d8c2a9"
             ],
             "index": "pypi",
-            "version": "==0.9.3"
+            "version": "==0.9.4"
         },
         "pathspec": {
             "hashes": [

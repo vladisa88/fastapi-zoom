@@ -16,6 +16,7 @@ asyncpg = "*"
 psycopg2 = "*"
 pylint = "*"
 black = "*"
+fastapi-utils = "*"
 
 [requires]
 python_version = "3.9"

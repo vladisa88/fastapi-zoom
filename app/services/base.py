@@ -9,6 +9,7 @@ class Base:
     Base class for interaction with
     Ormar ORM
     """
+
     model: ormar.Model
 
     async def fetch_all(self) -> tp.List[ormar.Model]:
