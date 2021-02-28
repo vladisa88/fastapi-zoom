@@ -1,4 +1,5 @@
 import typing as tp
+import asyncio
 
 from pydantic import BaseModel
 import ormar
@@ -8,6 +9,7 @@ from services.license import account_service
 from services.zoom import zoom_service
 
 from models.zoom import Meeting
+from schemas.zoom import StopMeetingModel
 
 
 class MeetingService(Base):
@@ -46,6 +48,20 @@ class MeetingService(Base):
         await account.update(is_using=False)
         await zoom_service.zoom.stop_meeting(meeting_id)
         return
+
+    async def stop_list_of_meetings(self, data: StopMeetingModel) -> dict:
+        """
+        Stop all meetings that are not in list of live meetings (from body)
+        """
+        tasks = []
+        live_meetings = await Meeting.objects.exclude(
+            meeting_id__in=data.meetings_id
+        ).all()
+        for meeting in live_meetings:
+            task = asyncio.create_task(meeting_service.stop(meeting.meeting_id))
+            tasks.append(task)
+        await asyncio.gather(*tasks)
+        return {"status": "success"}
 
 
 meeting_service = MeetingService()
