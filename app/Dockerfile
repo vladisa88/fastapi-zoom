@@ -2,7 +2,7 @@
 FROM python:3.9.1-buster
 
 # Install runtime libraries for Postgres connection
-RUN apt-get install -y libpq-dev
+RUN apt-get update && apt-get install -y libpq-dev netcat
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1

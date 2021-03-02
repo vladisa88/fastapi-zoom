@@ -9,7 +9,7 @@ services:
       - postgres_data:/var/lib/postgresql/data/
 
   back-end:
-    container_name: zoom-back-end
+    container_name: back-end
     build:
       context: .
       dockerfile: app/Dockerfile
