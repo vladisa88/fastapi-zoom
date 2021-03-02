@@ -2,8 +2,8 @@ import typing as tp
 
 from pydantic import BaseModel
 import ormar
+from fastapi_ormar_utilities import Base
 
-from services.base import Base
 from services.license import account_service
 from services.zoom import zoom_service
 
