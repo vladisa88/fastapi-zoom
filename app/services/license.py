@@ -1,6 +1,6 @@
 from random import choice
+from fastapi_ormar_utilities import Base
 
-from services.base import Base
 from models.license import LicenseAccount
 
 

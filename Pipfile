@@ -13,9 +13,14 @@ uvicorn = "*"
 aiosqlite = "*"
 alembic = "*"
 asyncpg = "*"
-psycopg2 = "*"
 pylint = "*"
 black = "*"
+fastapi-ormar-utilities = "*"
+psycopg2 = "*"
+pydantic = "*"
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
