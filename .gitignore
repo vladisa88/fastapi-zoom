@@ -3,6 +3,7 @@
 .idea
 __pycache__
 /.vscode
+/env
 
 ## Files
 .DS_Store

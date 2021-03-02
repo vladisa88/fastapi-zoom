@@ -12,14 +12,13 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Copy Pipfile[.lock]
-COPY ./Pipfile* ./
+COPY ./requirements.txt ./
 
 # Copy scripts dir
 COPY ./scripts/ ./scripts
 
 # Install pipenv and packages
-RUN pip install pipenv && \
-    pipenv install --system --deploy --dev
+RUN pip install -r requirements.txt
 
 # Copy everything else
 COPY app .
