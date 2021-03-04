@@ -2,6 +2,7 @@ aiohttp==3.7.4
 aiozoom==0.0.8.8
 alembic==1.5.5
 appdirs==1.4.4
+asyncpg==0.22.0
 astroid==2.5.1
 async-timeout==3.0.1
 attrs==20.3.0
