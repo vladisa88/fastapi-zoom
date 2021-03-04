@@ -1,11 +1,7 @@
 # pylint:disable=(missing-function-docstring)
-import asyncio
-
 from fastapi import APIRouter
 
 from schemas.zoom import CreateMeetingModel, ResponseMeetingModel, StopMeetingModel
-
-from models.zoom import Meeting
 
 from services.meeting import meeting_service
 from services.zoom import zoom_service
@@ -23,6 +19,11 @@ async def fetch_meetings():
     return await meeting_service.fetch_all()
 
 
+@zoom_router.get("/meeting/{meeting_id}")
+async def fetch_one_meeting(meeting_id: str):
+    return await zoom_service.zoom.get_meeting(meeting_id)
+
+
 @zoom_router.delete("/meeting/{meeting_id}")
 async def stop_meeting(meeting_id: str):
     return await zoom_service.zoom.stop_meeting(meeting_id)
@@ -30,10 +31,4 @@ async def stop_meeting(meeting_id: str):
 
 @zoom_router.put("/meetings")
 async def stop_all_meetings(data: StopMeetingModel):
-    tasks = []
-    live_meetings = await Meeting.objects.exclude(meeting_id__in=data.meetings_id).all()
-    for meeting in live_meetings:
-        task = asyncio.create_task(meeting_service.stop(meeting.meeting_id))
-        tasks.append(task)
-    await asyncio.gather(*tasks)
-    return {"status": "success"}
+    return await meeting_service.stop_all(data)
