@@ -29,12 +29,12 @@ class ZoomService:
         """
         return {
             "topic": title,
-            "type": 2,
+            "type": 3,
             "timezone": "Europe/Moscow",
             "settings": {
                 "auto_recording": "cloud",
-                "waiting_room": False,
-                "meeting_authentication": True,
+                "waiting_room": True,
+                "meeting_authentication": False,
                 "join_before_host": True,
             },
         }
