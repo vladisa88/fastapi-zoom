@@ -9,6 +9,7 @@ class LicenseAccount(ormar.Model):
     """
     Describe `LicenseAccount` model in database
     """
+
     class Meta(BaseMeta):
         # pylint:disable=(missing-class-docstring)
         pass

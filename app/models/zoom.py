@@ -10,6 +10,7 @@ class Meeting(ormar.Model):
     """
     Describe `Meeting` model in database
     """
+
     class Meta(BaseMeta):
         # pylint:disable=(missing-class-docstring)
         pass
