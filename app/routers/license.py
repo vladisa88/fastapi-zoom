@@ -19,4 +19,9 @@ async def create_accounts():
 
 @account_router.get("/accounts")
 async def fetch_accounts():
-    return await account_service.fetch_all()
+    return await account_service.fetch_all(related_field="meetings")
+
+
+@account_router.get("/accounts/{primary_key}")
+async def fetch_one_account(primary_key: int):
+    return await account_service.fetch_one(primary_key, "meetings")
