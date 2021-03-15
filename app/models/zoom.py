@@ -1,6 +1,5 @@
 # pylint:disable=(invalid-name, too-few-public-methods, too-many-ancestors)
 import ormar
-from pydantic import EmailStr
 
 from models.base import BaseMeta
 from models.license import LicenseAccount
