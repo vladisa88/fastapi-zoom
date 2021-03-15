@@ -24,4 +24,4 @@ class Meeting(ormar.Model):
     start_url: str = ormar.String(max_length=1000)
     join_url: str = ormar.String(max_length=100)
     is_active: bool = ormar.Boolean(default=True)
-    email: EmailStr = ormar.ForeignKey(LicenseAccount)
+    email: LicenseAccount = ormar.ForeignKey(LicenseAccount)

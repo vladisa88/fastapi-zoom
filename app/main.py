@@ -6,6 +6,7 @@ from conf.settings import CONFIG
 from routers.zoom import zoom_router
 from routers.license import account_router
 from routers.statistic import statistic_router
+from routers.recording import recording_router
 
 app = FastAPI(
     title=CONFIG.title, description=CONFIG.description, version=CONFIG.version
@@ -41,3 +42,5 @@ app.include_router(zoom_router, tags=["meetings"])
 app.include_router(account_router, tags=["accounts"])
 
 app.include_router(statistic_router, tags=["statistics"])
+
+app.include_router(recording_router, tags=["recordings"])
