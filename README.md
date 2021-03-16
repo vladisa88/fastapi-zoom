@@ -13,7 +13,7 @@
 * Use aiozoom library
 * Use travis ci
 
-### To use in on your device:
+### To use it on your device:
 ```git clone https://github.com/vladisa88/fastapi-zoom.git```
 
 Rename ".env.example" to ".env" and put your own data there
