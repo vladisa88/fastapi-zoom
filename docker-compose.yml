@@ -24,6 +24,7 @@ services:
       - ./app/routers:/app/routers
       - ./app/schemas:/app/schemas
       - ./app/services:/app/services
+      - ./app/alembic:/app/alembic
 
 
 volumes:
