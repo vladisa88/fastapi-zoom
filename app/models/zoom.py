@@ -1,4 +1,6 @@
 # pylint:disable=(invalid-name, too-few-public-methods, too-many-ancestors)
+from datetime import datetime
+
 import ormar
 
 from models.base import BaseMeta
@@ -23,4 +25,5 @@ class Meeting(ormar.Model):
     start_url: str = ormar.String(max_length=1000)
     join_url: str = ormar.String(max_length=100)
     is_active: bool = ormar.Boolean(default=True)
+    created: datetime = ormar.DateTime(default=datetime.now())
     email: LicenseAccount = ormar.ForeignKey(LicenseAccount)
