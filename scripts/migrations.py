@@ -11,7 +11,7 @@ def parse_arguments() -> str:
     option = sys.argv[1]
     if option.find('-m') == -1:
         raise error_message
-    arguments = [arg for arg in sys.argv[2:]]
+    arguments = sys.argv[2:]
     if len(arguments) > 1:
         raise error_message
     return arguments[0]
