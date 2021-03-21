@@ -1,3 +1,4 @@
+# pylint:disable=(too-few-public-methods)
 from pydantic import BaseModel
 
 
