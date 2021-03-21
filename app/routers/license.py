@@ -6,6 +6,8 @@ from fastapi import APIRouter
 from services.license import LicenseAccountService
 from services.functions import create_accounts_task
 
+from schemas.license import UpdateAccount
+
 
 account_router = APIRouter()
 account_service = LicenseAccountService()
@@ -25,3 +27,8 @@ async def fetch_accounts():
 @account_router.get("/accounts/{primary_key}")
 async def fetch_one_account(primary_key: int):
     return await account_service.fetch_one(primary_key, "meetings")
+
+
+@account_router.patch("/accounts/")
+async def patch_status(data: UpdateAccount):
+    return await account_service.patch_status(data)
