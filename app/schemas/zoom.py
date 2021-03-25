@@ -1,5 +1,6 @@
 # pylint:disable=(invalid-name, unsubscriptable-object, too-few-public-methods)
 import typing as tp
+
 from pydantic import BaseModel, Field
 
 

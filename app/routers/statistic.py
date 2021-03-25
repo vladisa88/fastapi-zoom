@@ -19,11 +19,8 @@ async def fetch_meeting_statistic_query(
     date_from: date,
     date_to: date,
     course_code: tp.Optional[str] = None,
-    lesson_title: tp.Optional[str] = None
+    lesson_title: tp.Optional[str] = None,
 ):
     return await statistic_servive.fetch_statistic_with_params(
-        date_from,
-        date_to,
-        course_code,
-        lesson_title
+        date_from, date_to, course_code, lesson_title
     )

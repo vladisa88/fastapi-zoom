@@ -6,4 +6,5 @@ class UpdateAccount(BaseModel):
     """
     Schema for updating the status of account model
     """
+
     email: str = "example@test.com"

@@ -1,15 +1,18 @@
-import typing as tp
 import asyncio
+import typing as tp
+
+import ormar
+
+from fastapi_ormar_utilities import Base
 
 from pydantic import BaseModel
-import ormar
-from fastapi_ormar_utilities import Base
+
+from models.zoom import Meeting
+
+from schemas.zoom import StopMeetingModel
 
 from services.license import account_service
 from services.zoom import zoom_service
-
-from models.zoom import Meeting
-from schemas.zoom import StopMeetingModel
 
 
 class MeetingService(Base):
@@ -60,7 +63,9 @@ class MeetingService(Base):
             meeting_id__in=meetings.meetings_id
         ).all()
         for meeting in live_meetings:
-            task = asyncio.create_task(meeting_service.stop(meeting.meeting_id))
+            task = asyncio.create_task(
+                meeting_service.stop(meeting.meeting_id)
+            )
             tasks.append(task)
         await asyncio.gather(*tasks)
         return {"status": "success"}

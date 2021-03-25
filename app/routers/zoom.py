@@ -1,7 +1,10 @@
 # pylint:disable=(missing-function-docstring)
 from fastapi import APIRouter
-
-from schemas.zoom import CreateMeetingModel, ResponseMeetingModel, StopMeetingModel
+from schemas.zoom import (
+    CreateMeetingModel,
+    ResponseMeetingModel,
+    StopMeetingModel,
+)
 
 from services.meeting import meeting_service
 from services.zoom import zoom_service
