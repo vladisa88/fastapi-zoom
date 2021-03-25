@@ -1,7 +1,8 @@
-# pylint:disable=(invalid-name, too-few-public-methods, missing-class-docstring)
+# pylint:disable=(invalid-name, too-few-public-methods)
+# pylint:disable=(missing-class-docstring)
 import os
 
-from conf.vars import TITLE, DESCRIPTION, VERSION
+from conf.vars import DESCRIPTION, TITLE, VERSION
 
 
 class Config:
