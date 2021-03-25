@@ -1,0 +1,37 @@
+# Python image
+FROM python:3.9-slim-buster
+
+# Install runtime libraries for entrypoint
+RUN apt-get update && apt-get install -y netcat
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONPATH "/app:${PYTHONPATH}"
+
+# Set working directory
+WORKDIR /app
+
+# Copy scripts dir
+COPY ./scripts/ ./scripts
+
+COPY ./tests ./tests
+
+# Copy and install requirements
+COPY ./requirements.txt ./
+
+# Remove package related with posgres
+RUN sed -i "/psycopg2/d" ./requirements.txt
+RUN sed -i "/asyncpg/d" ./requirements.txt
+
+# Install requirements
+RUN pip install -r requirements.txt
+
+# Copy .pylintrc file
+COPY ./.pylintrc ./
+
+# Copy everything else
+COPY app .
+
+# Run service
+ENTRYPOINT [ "./scripts/entrypoint-dev.sh" ]

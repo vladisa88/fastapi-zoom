@@ -1,20 +1,11 @@
 version: "3"
 
 services:
-  postgres:
-    image: postgres:13-alpine
-    env_file:
-      - .env
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-
   back-end:
     container_name: back-end
     build:
       context: .
-      dockerfile: app/Dockerfile
-    depends_on: 
-      - postgres
+      dockerfile: app/Dockerfile.dev
     ports: 
       - $BACK_END_PORT:$BACK_END_PORT
     env_file:
@@ -26,7 +17,3 @@ services:
       - ./app/services:/app/services
       - ./app/alembic:/app/alembic
       - ./tests:/app/tests
-
-
-volumes:
-  postgres_data:
