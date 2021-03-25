@@ -1,5 +1,4 @@
 import ormar
-
 from conf.db import database, metadata
 
 

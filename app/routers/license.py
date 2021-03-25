@@ -3,11 +3,10 @@ import asyncio
 
 from fastapi import APIRouter
 
-from services.license import LicenseAccountService
-from services.functions import create_accounts_task
-
 from schemas.license import UpdateAccount
 
+from services.functions import create_accounts_task
+from services.license import LicenseAccountService
 
 account_router = APIRouter()
 account_service = LicenseAccountService()

@@ -2,7 +2,6 @@
 from datetime import datetime
 
 import ormar
-
 from models.base import BaseMeta
 from models.license import LicenseAccount
 
