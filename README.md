@@ -12,6 +12,8 @@
 * Alembic migrations
 * Use aiozoom library
 * Use travis ci
+* Use black, pylint, flake8, autoflake
+* Tests
 
 ### To use it on your device:
 ```git clone https://github.com/vladisa88/fastapi-zoom.git```

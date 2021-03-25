@@ -4,7 +4,7 @@
 __pycache__
 /.vscode
 /env
-*.pytest_cache
+*/.pytest_cache
 
 ## Files
 .DS_Store
