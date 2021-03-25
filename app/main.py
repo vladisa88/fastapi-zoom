@@ -1,19 +1,17 @@
 from fastapi import FastAPI
 
-from conf.db import database, metadata, engine
+from conf.db import database
 from conf.settings import CONFIG
 
-from routers.zoom import zoom_router
 from routers.license import account_router
-from routers.statistic import statistic_router
 from routers.recording import recording_router
+from routers.statistic import statistic_router
+from routers.zoom import zoom_router
 
 app = FastAPI(
     title=CONFIG.title, description=CONFIG.description, version=CONFIG.version
 )
 
-
-metadata.create_all(engine)
 app.state.database = database
 
 
