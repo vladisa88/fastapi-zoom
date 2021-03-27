@@ -18,6 +18,17 @@
 ### To use it on your device:
 ```git clone https://github.com/vladisa88/fastapi-zoom.git```
 
+**Production environment**
+
 Rename ".env.example" to ".env" and put your own data there
 
 ```docker-compose up --build```
+
+**If you want to run tests follow this steps:**
+
+Rename ".env.dev.example" to ".env" and put your own data there
+
+```docker-compose -f dev.docker-compose.yml up --build```
+
+This will run a simple container without postgres database.
+Use it only for running tests.
