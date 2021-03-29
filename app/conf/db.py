@@ -3,7 +3,7 @@ import os
 import databases
 import sqlalchemy
 
-if not bool(os.environ["IS_TEST"]):
+if os.environ["IS_TEST"] == "0":
     from conf.settings import POSTGRES_CONFIG
 
     DATABASE_URL = POSTGRES_CONFIG.url
