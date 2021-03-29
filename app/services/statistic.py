@@ -2,8 +2,12 @@ import asyncio
 import typing as tp
 from datetime import date
 
+from fastapi import HTTPException, status
+
 from services.meeting import meeting_service
 from services.zoom import zoom_service
+
+from schemas.statistic import StatisticModel
 
 
 class StatisticService:
@@ -12,11 +16,16 @@ class StatisticService:
     Zoom dashboard API
     """
 
-    async def fetch_statistic(self, meeting_id: str) -> dict:
+    async def fetch_statistic(self, meeting_id: str) -> StatisticModel:
         """
         Get information about past meeting
         """
-        return await zoom_service.zoom.get_meeting_participants(meeting_id)
+        participation = await zoom_service.zoom.get_meeting_participants(
+            meeting_id
+        )
+        participants = participation.get("participants", None)
+        lesson = await zoom_service.zoom.get_meeting_info(meeting_id)
+        return StatisticModel(lesson=lesson, participants=participants)
 
     async def fetch_statistic_with_params(
         self,
@@ -45,6 +54,12 @@ class StatisticService:
 
         tasks = []
         meeting_ids = [m.meeting_id for m in meetings]
+
+        if not meeting_ids:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail="Items not found"
+            )
+
         for m_id in meeting_ids:
             task = asyncio.create_task(self.fetch_statistic(m_id))
             tasks.append(task)
