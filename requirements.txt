@@ -1,6 +1,6 @@
 aiohttp==3.7.4
 aiosqlite==0.17.0
-aiozoom==0.0.8.8
+aiozoom==0.0.9
 alembic==1.5.5
 appdirs==1.4.4
 astroid==2.5.1
