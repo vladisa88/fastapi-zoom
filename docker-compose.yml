@@ -12,7 +12,7 @@ services:
     container_name: back-end
     build:
       context: .
-      dockerfile: app/Dockerfile
+      dockerfile: app/Dockerfile.test
     depends_on: 
       - postgres
     ports: 

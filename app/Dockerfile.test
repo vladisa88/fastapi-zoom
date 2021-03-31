@@ -1,0 +1,39 @@
+# Python image
+FROM python:3.9.1-buster as builder
+
+# Install runtime libraries for Postgres connection
+RUN apt-get update && apt-get install -y libpq-dev netcat
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN python -m venv /opt/venv
+
+# Make sure we use the virtualenv:
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Copy and install requirements
+COPY ./requirements.txt ./
+RUN pip install -r requirements.txt
+
+FROM python:3.9.1-slim-buster
+COPY --from=builder /opt/venv /opt/venv
+
+# Make sure we use the virtualenv:
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Install runtime libraries for Postgres connection
+RUN apt-get update && apt-get install -y libpq-dev netcat
+
+# Set working directory
+WORKDIR /app
+
+# Copy scripts dir
+COPY ./scripts/ ./scripts
+
+# Copy everything else
+COPY app .
+
+# Run service
+ENTRYPOINT [ "./scripts/entrypoint.sh" ]
