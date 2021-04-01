@@ -1,3 +1,4 @@
+# pylint:disable=(too-few-public-methods)
 import typing as tp
 
 from pydantic import BaseModel

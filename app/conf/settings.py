@@ -30,5 +30,6 @@ class PostgresConfig:
             f"@{self.host}:{self.port}/{self.db}"
         )
 
+
 if os.environ["IS_TEST"] == 0:
     POSTGRES_CONFIG = PostgresConfig()
