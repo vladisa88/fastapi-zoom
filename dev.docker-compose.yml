@@ -9,7 +9,7 @@ services:
     ports: 
       - $BACK_END_PORT:$BACK_END_PORT
     env_file:
-      - .env
+      - .env.dev
     volumes: 
       - ./app/conf:/app/conf
       - ./app/routers:/app/routers

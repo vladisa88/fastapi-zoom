@@ -11,7 +11,7 @@ class Config:
         self.description = DESCRIPTION
         self.version = VERSION
         self.port = int(os.environ["BACK_END_PORT"])
-        self.zoon_token = os.environ["ZOOM_TOKEN"]
+        self.zoom_token = os.environ["ZOOM_TOKEN"]
 
 
 CONFIG = Config()
@@ -30,5 +30,5 @@ class PostgresConfig:
             f"@{self.host}:{self.port}/{self.db}"
         )
 
-
-POSTGRES_CONFIG = PostgresConfig()
+if os.environ["IS_TEST"] == 0:
+    POSTGRES_CONFIG = PostgresConfig()
