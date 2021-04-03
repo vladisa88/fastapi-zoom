@@ -1,9 +1,6 @@
 # Python image
 FROM python:3.9-slim-buster
 
-# Install runtime libraries for entrypoint
-RUN apt-get update && apt-get install -y netcat
-
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
