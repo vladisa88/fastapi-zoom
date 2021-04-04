@@ -41,16 +41,14 @@ class StatisticService:
             "created__gte": str(date_from),
             "created__lte": str(date_to),
         }
+
         if course_code:
-            meetings = await meeting_service.filter(
-                course_code=course_code, **base_kwargs
-            )
-        elif lesson_title:
-            meetings = await meeting_service.filter(
-                lesson_title=lesson_title, **base_kwargs
-            )
-        else:
-            meetings = await meeting_service.filter(**base_kwargs)
+            base_kwargs["course_code"] = course_code
+
+        if lesson_title:
+            base_kwargs["lesson_title"] = lesson_title
+
+        meetings = await meeting_service.filter(**base_kwargs)
 
         tasks = []
         meeting_ids = [m.meeting_id for m in meetings]
