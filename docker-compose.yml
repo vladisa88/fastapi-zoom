@@ -13,13 +13,13 @@ services:
     build:
       context: .
       dockerfile: app/Dockerfile.test
-    depends_on: 
+    depends_on:
       - postgres
-    ports: 
+    ports:
       - $BACK_END_PORT:$BACK_END_PORT
     env_file:
       - .env
-    volumes: 
+    volumes:
       - ./app/conf:/app/conf
       - ./app/routers:/app/routers
       - ./app/schemas:/app/schemas
